@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+          
+   Name:<input type="text" id="one">
+   Place:<input type="text" id="two">
+   age:<input type="text" id="three">
+   Gradution: <input type="text" id="four">
+    <button onclick="pd()">push</button>
+    <button onclick="dd()">display</button>
+    <button onclick="remove()">remove</button>
+
+   <div id="qq"></div>
+
+
+
+    <script>
+                  
+               var arr=[]
+
+                  function pd(){
+
+                        var pn=document.getElementById("one").value
+                        var pp=document.getElementById("two").value
+                        var pa=document.getElementById("three").value
+                        var pg=document.getElementById("four").value
+                        
+                       
+                        var students={name:pn,place:pp,age:pa,gradution:pg}
+
+                        arr.push(students);
+                        localStorage.setItem('data',JSON.stringify(arr))
+
+                  }
+
+                  function dd(){
+
+               var arr2=JSON.parse(localStorage.getItem('data'));
+
+                  var dis=document.getElementById("qq")
+                  var aa=""
+
+                      for(var i=0;i<arr2.length;i++){
+                         
+                        aa=aa+"<table border='2px'>"+"<tr>"+"<td>"+arr2[i].name+"</td>"+"<td>"+arr2[i].place+"</td>"+"<td>"+arr2[i].age+"</td>"+"<td>"+arr2[i].gradution+"</td>"+"</tr>"+"</table>";
+
+                      }
+                      dis.innerHTML=aa
+                  }
+
+                  function remove() {
+                    localStorage.removeItem('data')
+                  }
+
+                     
+
+    </script>
+
+</body>
+</html>
